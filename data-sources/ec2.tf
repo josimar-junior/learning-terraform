@@ -27,6 +27,21 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
+data "aws_iam_policy_document" "static_website" {
+  statement {
+    sid = "PublicReadGetObject"
+
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }
+
+    actions = ["s3:GetObject"]
+
+    resources = ["arn:aws:s3:::*/*"]
+  }
+}
+
 output "ubuntu_ami_data" {
   value = data.aws_ami.ubuntu.id
 }
@@ -45,6 +60,10 @@ output "aws_vpc" {
 
 output "azs" {
   value = data.aws_availability_zones.available.names
+}
+
+output "iam_policy" {
+  value = data.aws_iam_policy_document.static_website.json
 }
 
 resource "aws_instance" "instance" {
