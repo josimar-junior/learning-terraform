@@ -23,6 +23,10 @@ data "aws_vpc" "prod_vpc" {
   }
 }
 
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
 output "ubuntu_ami_data" {
   value = data.aws_ami.ubuntu.id
 }
@@ -37,6 +41,10 @@ output "aws_region" {
 
 output "aws_vpc" {
   value = data.aws_vpc.prod_vpc.id
+}
+
+output "azs" {
+  value = data.aws_availability_zones.available.names
 }
 
 resource "aws_instance" "instance" {
