@@ -5,6 +5,10 @@ variable "numbers_list" {
 variable "object_list" {
   type = list(object({
     firstname = string
-    lastname = string
+    lastname  = string
   }))
+}
+
+variable "numbers_map" {
+  type = map(number)
 }
