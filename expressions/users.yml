@@ -1,0 +1,5 @@
+users:
+ - name: Josimar
+   group: developers
+ - name: Joao
+   group: auditors
