@@ -15,3 +15,14 @@ numbers_map = {
   "four"  = 4,
   "five"  = 5
 }
+
+users = [{
+  role     = "admin"
+  username = "josimar"
+  }, {
+  role     = "developer"
+  username = "joao"
+  }, {
+  role     = "QA"
+  username = "joao"
+}]
