@@ -1,0 +1,7 @@
+users:
+- username: josimar
+  roles: [readonly, developer]
+- username: joao
+  roles: [developer]
+- username: maria
+  roles: [admin, qa]
