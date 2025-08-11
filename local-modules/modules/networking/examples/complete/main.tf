@@ -1,13 +1,8 @@
-# Networking module
-This module manages the creation of VPCs and subnets, allowing for the creation of both private and publics subnets.
-
-Example usage:
-```
 module "vpc" {
   source = "./modules/networking"
   vpc_config = {
     cidr_block = "10.0.0.0/16"
-    name       = "your_vpc"
+    name       = "local-modules"
   }
   subnet_config = {
     subnet_1 = {
@@ -21,4 +16,3 @@ module "vpc" {
     }
   }
 }
-```
