@@ -19,12 +19,12 @@ output "vpc_id" {
   value       = aws_vpc.this.id
 }
 
-output "output_public_subnets" {
+output "public_subnets" {
   description = "The ID and the availanility zone of public subnets"
   value       = local.output_public_subnets
 }
 
-output "output_private_subnets" {
+output "private_subnets" {
   description = "The ID and the availanility zone of private subnets"
   value       = local.output_private_subnets
 }
