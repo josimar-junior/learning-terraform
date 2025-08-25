@@ -18,12 +18,10 @@ resource "aws_lambda_function" "this" {
   memory_size                        = 128
   package_type                       = "Zip"
   reserved_concurrent_executions     = -1
-  role                               = "arn:aws:iam::864899834937:role/service-role/manually-created-lambda-role-2e1osqjc"
+  role                               = aws_iam_role.lambda_execution_role.arn
   runtime                            = "nodejs22.x"
   skip_destroy                       = false
   source_code_hash                   = data.archive_file.lambda_code.output_base64sha256
-  tags                               = {}
-  tags_all                           = {}
   timeout                            = 3
   logging_config {
     log_format            = "Text"
