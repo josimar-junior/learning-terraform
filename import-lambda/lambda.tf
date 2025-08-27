@@ -25,6 +25,11 @@ resource "aws_lambda_function" "this" {
   timeout                        = 3
   logging_config {
     log_format = "Text"
-    log_group  = "/aws/lambda/manually-created-lambda"
+    log_group  = aws_cloudwatch_log_group.lambda.name
   }
+}
+
+resource "aws_lambda_function_url" "this" {
+  function_name      = aws_lambda_function.this.function_name
+  authorization_type = "NONE"
 }

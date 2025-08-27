@@ -1,7 +1,7 @@
 export const handler = async (event) => {
   const response = {
     statusCode: 200,
-    body: JSON.stringify('Hello world from Terraform!'),
+    body: JSON.stringify('Another hello world from Terraform!'),
   };
   return response;
 };

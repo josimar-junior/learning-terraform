@@ -8,6 +8,10 @@ import {
   id = "arn:aws:iam::864899834937:policy/service-role/AWSLambdaBasicExecutionRole-2b9fb618-1282-4d8e-88a0-68e73a57ac39"
 }
 
+data "aws_caller_identity" "current" {}
+
+data "aws_region" "current" {}
+
 resource "aws_iam_role" "lambda_execution_role" {
   assume_role_policy = jsonencode({
     Statement = [{
@@ -30,11 +34,11 @@ resource "aws_iam_policy" "lambda_execution_policy" {
     Statement = [{
       Action   = "logs:CreateLogGroup"
       Effect   = "Allow"
-      Resource = "arn:aws:logs:us-east-1:864899834937:*"
+      Resource = "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:*"
       }, {
       Action   = ["logs:CreateLogStream", "logs:PutLogEvents"]
       Effect   = "Allow"
-      Resource = ["arn:aws:logs:us-east-1:864899834937:log-group:/aws/lambda/manually-created-lambda:*"]
+      Resource = ["${aws_cloudwatch_log_group.lambda.arn}:*"]
     }]
     Version = "2012-10-17"
   })
