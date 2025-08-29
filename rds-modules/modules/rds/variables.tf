@@ -35,6 +35,8 @@ variable "credentials" {
     password = string
   })
 
+  sensitive = true
+
   validation {
     condition = (
       length(regexall("[a-zA-Z]+", var.credentials.password)) > 0
@@ -50,4 +52,12 @@ variable "credentials" {
     4. Contain only the following characters: a-z, A-Z, 0-9, +, _, ?, -
     EOT
   }
+}
+
+variable "subnet_ids" {
+  type = list(string)
+}
+
+variable "security_group_ids" {
+  type = list(string)
 }
