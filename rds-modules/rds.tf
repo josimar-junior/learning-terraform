@@ -9,7 +9,7 @@ module "database" {
     aws_subnet.private2.id
   ]
   credentials = {
-    username = "db-admin"
-    password = "abc1+?_"
+    username = "dbadmin"
+    password = "abc1+?_def"
   }
 }
