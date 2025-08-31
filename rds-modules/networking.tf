@@ -10,12 +10,37 @@ resource "aws_vpc" "custom" {
   }
 }
 
-resource "aws_subnet" "allowed" {
+moved {
+  from = aws_subnet.allowed
+  to   = aws_subnet.private1
+}
+
+resource "aws_subnet" "private1" {
   vpc_id     = aws_vpc.custom.id
   cidr_block = "10.0.0.0/24"
 
   tags = {
-    Name = "subnet-allowed"
+    Name   = "subnet-private1"
+    Access = "private"
+  }
+}
+
+resource "aws_subnet" "private2" {
+  vpc_id     = aws_vpc.custom.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name   = "subnet-private2"
+    Access = "private"
+  }
+}
+
+resource "aws_subnet" "public" {
+  vpc_id     = aws_vpc.custom.id
+  cidr_block = "10.0.2.0/24"
+
+  tags = {
+    Name = "subnet-public"
   }
 }
 
